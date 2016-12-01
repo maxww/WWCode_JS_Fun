@@ -17,3 +17,29 @@ output => 1
 function findSubStr (string, substring) {
   // write your code here
 }
+
+
+// Solution with one while loop
+function findSubStr (string, substring) {
+  let index = -1;
+  let j = 0;
+  let i = 0;
+  while ( i < string.length ) {
+    if (string[i] === substring[j]) {
+      if (j === 0) {
+        index = i;
+      }
+      i++;
+      j++;
+    } else {
+      index = -1;
+      i++;
+      j = 0;
+    }
+  }
+  return index;
+}
+
+findSubStr('abcde', 'cd') // 2
+findSubStr('this is a cat', 'a cat') // 8
+findSubStr('abced', 'k') // -1
