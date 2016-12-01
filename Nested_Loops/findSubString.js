@@ -18,6 +18,23 @@ function findSubStr (string, substring) {
   // write your code here
 }
 
+// Solution shown at the meet up (nested for loops)
+function findSubStr (string, subString) {
+  for (var i=0; i<string.length; i++) {
+    for (var j=0; j<subString.length; j++) {
+      if (string[i+j] !== subString[j]) {
+       break;
+      } 
+      
+      if (j === subString.length-1) {
+        return i;
+      }
+    }
+  }
+  return -1;
+}
+
+findSubStr('abcdecat', 'cat') // 5
 
 // Solution with one while loop
 function findSubStr (string, substring) {
@@ -26,16 +43,13 @@ function findSubStr (string, substring) {
   let i = 0;
   while ( i < string.length ) {
     if (string[i] === substring[j]) {
-      if (j === 0) {
-        index = i;
-      }
-      i++;
+      if (j === 0) index = i;
       j++;
     } else {
       index = -1;
-      i++;
       j = 0;
     }
+    i++;
   }
   return index;
 }
